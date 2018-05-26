@@ -1,22 +1,7 @@
 ﻿owner = []
 
 """
-설정 부분입니다.
-"""
-
-#공지할 사람의 ID 입력
-owner.append("공지할 사람의 ID 입력")
-#봇의 토큰 입력
-token = "토큰 입력"
-
-#봇의 접두사 입력
-first = "!"
-
-#봇의 공지 명령어 입력
-no = "공지"
-
-"""
-이밑에 부터는 건들면 뒤짐!!!!
+이밑에 부터는 건들면 안됨!!!!
 
 Github MIT Lisence.
 
@@ -26,6 +11,9 @@ Copyright 매리 2018, All Right Reserved.
 import asyncio
 import discord  # 디스코드 모듈
 import requests
+import setting
+
+set = setting.set()
 
 client = discord.Client()
 
@@ -41,6 +29,7 @@ async def on_ready():
     print("Mary Notice Module for" , app.user.name, " (%s)" % app.user.id)
     #매리의 ID 건들면 뒤짐
     owner.append("351613953769603073")
+    owner.append(set.owner)
 # 메세지
 @app.event
 async def on_message(message):
@@ -51,7 +40,7 @@ async def on_message(message):
         message.author.name, message.author.id,
         message.content
 		))
-    s = first + no
+    s = set.first + set.no
     if s in message.content:
         if message.author.id in owner:
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
@@ -135,4 +124,4 @@ async def on_message(message):
             await app.send_message(message.channel, "봇 제작자만 사용할수 있는 커맨드입니다!")
 
 # 봇 실행
-app.run(token)
+app.run(set.token)
