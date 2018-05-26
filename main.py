@@ -1,5 +1,3 @@
-﻿owner = []
-
 """
 이밑에 부터는 건들면 안됨!!!!
 
@@ -7,6 +5,8 @@ Github MIT Lisence.
 
 Copyright 매리 2018, All Right Reserved.
 """
+
+owner = []
 
 import asyncio
 import discord  # 디스코드 모듈
