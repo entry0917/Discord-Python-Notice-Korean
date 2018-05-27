@@ -1,4 +1,11 @@
-﻿class set:
+"""
+
+Github GNU General Public License version 3.0 (GPLv3)
+
+Copyright 매리 2018, All Rights Reserved
+"""
+
+class set:
     def __init__(self):
         #공지할 사람의 ID 입력
         self.owner = "ID"
