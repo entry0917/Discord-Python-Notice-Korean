@@ -33,8 +33,8 @@ async def on_message(message):
     if message.author.id == app.user.id: return
 
     print("Channel: %s(%s) | Author: %s(#%s) | Message: %s" % (
-        message.channel, message.channel.id[:5],
-        message.author.name, message.author.id,
+        message.channel, str(message.channel.id)[:5],
+        message.author.name, str(message.author.id),
         message.content
 		))
     s = set.first + set.no
