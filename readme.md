@@ -4,6 +4,11 @@
 4. In CMD, Type `pip install asyncio`.
 5. In CMD, Type `pip install requests`.
 6. Edit `setting.py` File.
+
+**On Windows:**
 7. Run `start.bat`.
+
+**On Linux:**
+7. In CMD, Type `python3 main.py`
 
 We're ready to announce!
