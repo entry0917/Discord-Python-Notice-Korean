@@ -31,11 +31,13 @@ async def on_ready():
 async def on_message(message):
     if message.author.id == app.user.id: return
 
-    print("Channel: %s(%s) | Author: %s(#%s) | Message: %s" % (
-        message.channel, str(message.channel.id)[:5],
-        message.author.name, str(message.author.id),
-        message.content
-		))
+    if set.log:
+        print("Channel: %s(%s) | Author: %s(#%s) | Message: %s" % (
+            message.channel, str(message.channel.id)[:5],
+            message.author.name, str(message.author.id),
+            message.content
+	    	))
+
     s = set.first + set.no
     if s in message.content:
         if message.author.id in owner:
@@ -55,38 +57,23 @@ async def on_message(message):
             await app.edit_message(mssg, embed=embed)
             for server in app.servers:
                 for channel in server.channels:
-                    if 'notice' in channel.name:
-                        if not 'ban' in channel.name:
-                            if not 'worry' in channel.name:
-                                if not 'punish' in channel.name:
-                                    if not 'guild' in channel.name:
-                                        if not server.id in a:
-                                            try:
-                                                id = channel.id
-                                                msg = app.get_channel(id)
-                                                await app.send_message(msg, notice)
-                                            except:
-                                                e.append(str(channel.id))
-                                            else:
-                                                a.append(str(server.id))
-                                                b.append(str(channel.id))
-            for server in app.servers:
-                for channel in server.channels:
-                    if '공지' in channel.name:
-                        if not '밴' in channel.name:
-                            if not '경고' in channel.name:
-                                if not '제재' in channel.name:
-                                    if not '길드' in channel.name:
-                                        if not server.id in a:
-                                            try:
-                                                id = channel.id
-                                                msg = app.get_channel(id)
-                                                await app.send_message(msg, notice)
-                                            except:
-                                                e.append(str(channel.id))
-                                            else:
-                                                a.append(str(server.id))
-                                                b.append(str(channel.id))
+                    for tag in set.allowprefix:
+                        if tag in channel.name:
+                            dtat = True
+                            for distag in set.disallowprefix:
+                                if distag in channel.name:
+                                    dtat = False
+                            if dtat:
+                                if not server.id in a:
+                                    try:
+                                        id = channel.id
+                                        msg = app.get_channel(id)
+                                        await app.send_message(msg, notice)
+                                    except:
+                                        e.append(str(channel.id))
+                                    else:
+                                        a.append(str(server.id))
+                                        b.append(str(channel.id))
             asdf = "```\n"
             for server in app.servers:
                 if not server.id in a:
