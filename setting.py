@@ -7,7 +7,7 @@ Copyright 매리 2018, All Rights Reserved
 
 class set:
     def __init__(self):
-        #공지할 사람의 ID 입력
+        #공지할 사람의 디스코드 ID 입력
         self.owner = "ID"
         #봇의 토큰 입력
         self.token = "Token"
