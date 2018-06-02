@@ -8,7 +8,6 @@ owner = []
 
 import asyncio
 import discord  # 디스코드 모듈
-import requests
 import setting
 
 set = setting.set()
