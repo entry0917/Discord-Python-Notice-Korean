@@ -39,3 +39,11 @@ Discord-Python-Notice-Korean (DPNK)
 6. In CMD, Type `python3 main.py`
 
 We're ready to announce!
+
+# 라이선스
+
+[**GNU General Public License version 3.0 (GPLv3)**](https://opensource.org/licenses/gpl-3.0.html/)
+
+# 문의
+
+디스코드에서 **매리#4633** 검색 후 DM ~~또는 [**Mary Support Discord**](http://support.maryst.kro.kr/) 사용~~ (현재 비활성화)
