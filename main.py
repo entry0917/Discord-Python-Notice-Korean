@@ -7,26 +7,26 @@ Copyright 매리 2018, All Right Reserved.
 owner = []
 
 import asyncio
-import discord  # 디스코드 모듈
+import discord 
 import setting
 
 set = setting.set()
 
 client = discord.Client()
 
-app = discord.Client()  # 챗봇 지정
+app = discord.Client() 
 
 bot_deleting = True
 
 maker = "351613953769603073"
 
-# --- 이벤트영역 ---
+
 @app.event
 async def on_ready():
     print("Mary Notice Module for" , app.user.name, " (%s)" % app.user.id)
     owner.append("351613953769603073")
     owner.append(set.owner)
-# 메세지
+
 @app.event
 async def on_message(message):
     if message.author.id == app.user.id: return
@@ -41,15 +41,16 @@ async def on_message(message):
     s = set.first + set.no
     if s in message.content:
         if message.author.id in owner:
+            notice = message.content.replace(s, "")
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신 준비중!", value="<@" + message.author.id + ">", inline=True)
             embed.set_author(name="by 매리(#4633)", icon_url="https://cdn.discordapp.com/avatars/351613953769603073/b4805197b14b4366c3aaebaf79109fa8.webp")
             embed.set_footer(text="Notice Module by Mary")
             mssg = await app.send_message(message.channel, embed=embed)
-            notice = message.content.replace(s, "")
             a = []
             b = []
             e = []
+            ec = {}
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신중!", value="<@" + message.author.id + ">", inline=True)
             embed.set_author(name="by 매리(#4633)", icon_url="https://cdn.discordapp.com/avatars/351613953769603073/b4805197b14b4366c3aaebaf79109fa8.webp")
@@ -69,15 +70,34 @@ async def on_message(message):
                                         id = channel.id
                                         msg = app.get_channel(id)
                                         await app.send_message(msg, notice)
-                                    except:
+                                    except discord.HTTPException:
                                         e.append(str(channel.id))
+                                        ec[channel.id] = "HTTPException"
+                                    except discord.Forbidden:
+                                        e.append(str(channel.id))
+                                        ec[channel.id] = "Forbidden"
+                                    except discord.NotFound:
+                                        e.append(str(channel.id))
+                                        ec[channel.id] = "NotFound"
+                                    except discord.InvalidArgument:
+                                        e.append(str(channel.id))
+                                        ec[channel.id] = "InvalidArgument"
                                     else:
                                         a.append(str(server.id))
                                         b.append(str(channel.id))
             asdf = "```\n"
             for server in app.servers:
                 if not server.id in a:
-                    asdf = asdf + str(server.name) + "\n"
+                    if set.nfct:
+                        try:
+                            ch = await app.create_channel(server, set.nfctname)
+                            await app.send_message(ch, notice)
+                        except:
+                            asdf = asdf + str(server.name) + "[채널 생성 실패]\n"
+                        else:
+                            asdf = asdf + str(server.name) + "[채널 생성 및 재발송 성공]\n"
+                    else:
+                        asdf = asdf + str(server.name) + "\n"
             asdf = asdf + "```"
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신완료!", value="<@" + message.author.id + ">", inline=True)
@@ -88,7 +108,7 @@ async def on_message(message):
                 bs = bs + str(bn) + "\n"
             for ef in e:
                 en = app.get_channel(ef).name
-                es = es + str(en) + "\n"
+                es = es + str(app.get_channel(ef).server.name) + "(#" + str(en) + ") : " + ec[ef] + "\n"
             bs = bs + "```"
             es = es + "```"
             if bs == "``````":
@@ -97,14 +117,17 @@ async def on_message(message):
                 es = "``` ```"
             if asdf == "``````":
                 asdf = "``` ```"
-            embed.add_field(name="공지 발신 성공 채널:", value=bs, inline=True)
-            embed.add_field(name="공지 발신 실패 채널:", value=es, inline=True)
-            embed.add_field(name="공지 채널 없는 서버:", value=asdf, inline=True)
+            sucess = bs
+            missing = es
+            notfound = asdf
+            embed.add_field(name="공지 발신 성공 채널:", value=sucess, inline=True)
+            embed.add_field(name="공지 발신 실패 채널:", value=missing, inline=True)
+            embed.add_field(name="공지 채널 없는 서버:", value=notfound, inline=True)
             embed.set_author(name="by 매리(#4633)", icon_url="https://cdn.discordapp.com/avatars/351613953769603073/b4805197b14b4366c3aaebaf79109fa8.webp")
             embed.set_footer(text="Notice Module by Mary")
             await app.edit_message(mssg, embed=embed)
         else:
             await app.send_message(message.channel, "봇 제작자만 사용할수 있는 커맨드입니다!")
 
-# 봇 실행
+
 app.run(set.token)
