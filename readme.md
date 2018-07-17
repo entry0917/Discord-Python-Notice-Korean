@@ -44,4 +44,4 @@ We're ready to announce!
 
 # 문의
 
-디스코드에서 **매리#4633** 검색 후 DM ~~또는 [**Mary Support Discord**](http://support.maryst.kro.kr/) 사용~~ (현재 비활성화)
+디스코드에서 **매리#4633** 검색 후 DM 또는 [**Mary Support Discord**](http://support.maryst.kro.kr/) 사용
