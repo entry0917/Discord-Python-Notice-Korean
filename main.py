@@ -64,9 +64,7 @@ async def on_message(message):
                             if dtat:
                                 if not server.id in a:
                                     try:
-                                        id = channel.id
-                                        msg = app.get_channel(id)
-                                        await app.send_message(msg, notice)
+                                        await app.send_message(channel, notice)
                                     except discord.HTTPException:
                                         e.append(str(channel.id))
                                         ec[channel.id] = "HTTPException"
