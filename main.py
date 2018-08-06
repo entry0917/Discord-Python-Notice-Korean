@@ -16,8 +16,6 @@ client = discord.Client()
 
 app = discord.Client() 
 
-bot_deleting = True
-
 maker = "351613953769603073"
 
 
