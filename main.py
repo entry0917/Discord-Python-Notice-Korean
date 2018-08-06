@@ -22,7 +22,6 @@ maker = "351613953769603073"
 @app.event
 async def on_ready():
     print("Mary Notice Module for" , app.user.name, " (%s)" % app.user.id)
-    owner.append("351613953769603073")
     owner.append(set.owner)
 
 @app.event
