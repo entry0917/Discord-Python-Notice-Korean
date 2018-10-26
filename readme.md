@@ -12,7 +12,6 @@ Discord-Python-Notice-Korean (DPNK)
 
 1. 파이썬3.6을 설치해주세요!
 2. CMD에서 `pip install discord`를 쳐주세요!
-3. CMD에서 `pip install asyncio`를 쳐주세요!
 4. `setting.py`파일을 수정해주세요.
 
 **윈도우에서:**
@@ -27,7 +26,6 @@ Discord-Python-Notice-Korean (DPNK)
 
 1. Install Python3.6.
 2. In CMD, Type `pip install discord`.
-3. In CMD, Type `pip install asyncio`.
 4. Edit `setting.py` File.
 
 **On Windows:**
