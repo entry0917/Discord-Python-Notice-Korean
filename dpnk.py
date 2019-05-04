@@ -40,7 +40,7 @@ class DPNKDiscordClient():
         notice_channels = []
         success_send = []
 
-        for guild in app.servers:
+        for guild in app.guilds:
             guild_schannel = False
 
             for channel in guild.channels:
@@ -50,14 +50,14 @@ class DPNKDiscordClient():
             
             if not guild_schannel and created_channel:
                 try:
-                    c = await app.create_channel(guild, create_channel_name)
+                    c = await guild.create_text_channel(create_channel_name)
                     notice_channels.append(c)
                 except discord.Forbidden:
                     Error_guild.append(f"Error: Guild ({guild.id}), Forbidden!")
         
         for channel in notice_channels:
             try:
-                await app.send_message(channel, to_send)
+                await channel.send(to_send)
             except discord.HTTPException:
                 Error_guild.append(f"Error: Guild ({channel.server.id}) Channel ({channel.id}) , HTTPException!")
             except discord.Forbidden:
