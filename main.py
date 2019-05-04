@@ -12,11 +12,7 @@ import setting
 
 set = setting.set()
 
-client = discord.Client()
-
-app = discord.Client() 
-
-maker = "351613953769603073"
+app = discord.Client()
 
 
 @app.event
@@ -41,19 +37,17 @@ async def on_message(message):
             notice = message.content.replace(s, "")
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신 준비중!", value="<@" + message.author.id + ">", inline=True)
-            embed.set_author(name="by 매리(#4633)", icon_url="https://cdn.discordapp.com/avatars/351613953769603073/b4805197b14b4366c3aaebaf79109fa8.webp")
-            embed.set_footer(text="Notice Module by Mary")
-            mssg = await app.send_message(message.channel, embed=embed)
+            embed.set_footer(text="DPNK - StayCute")
+            mssg = await message.channel.send(embed=embed)
             a = []
             b = []
             e = []
             ec = {}
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신중!", value="<@" + message.author.id + ">", inline=True)
-            embed.set_author(name="by 매리(#4633)", icon_url="https://cdn.discordapp.com/avatars/351613953769603073/b4805197b14b4366c3aaebaf79109fa8.webp")
-            embed.set_footer(text="Notice Module by Mary")
-            await app.edit_message(mssg, embed=embed)
-            for server in app.servers:
+            embed.set_footer(text="DPNK - StayCute")
+            await mssg.edit(embed=embed)
+            for server in app.guilds:
                 for channel in server.channels:
                     for tag in set.allowprefix:
                         if tag in channel.name:
@@ -64,7 +58,7 @@ async def on_message(message):
                             if dtat:
                                 if not server.id in a:
                                     try:
-                                        await app.send_message(channel, notice)
+                                        await channel.send(notice)
                                     except discord.HTTPException:
                                         e.append(str(channel.id))
                                         ec[channel.id] = "HTTPException"
@@ -85,8 +79,8 @@ async def on_message(message):
                 if not server.id in a:
                     if set.nfct:
                         try:
-                            ch = await app.create_channel(server, set.nfctname)
-                            await app.send_message(ch, notice)
+                            ch = await server.create_text_channel(set.nfctname)
+                            await ch.send(notice)
                         except:
                             asdf = asdf + str(server.name) + "[채널 생성 실패]\n"
                         else:
@@ -118,11 +112,10 @@ async def on_message(message):
             embed.add_field(name="공지 발신 성공 채널:", value=sucess, inline=True)
             embed.add_field(name="공지 발신 실패 채널:", value=missing, inline=True)
             embed.add_field(name="공지 채널 없는 서버:", value=notfound, inline=True)
-            embed.set_author(name="by 매리(#4633)", icon_url="https://cdn.discordapp.com/avatars/351613953769603073/b4805197b14b4366c3aaebaf79109fa8.webp")
-            embed.set_footer(text="Notice Module by Mary")
-            await app.edit_message(mssg, embed=embed)
+            embed.set_footer(text="DPNK - StayCute")
+            await mssg.edit(embed=embed)
         else:
-            await app.send_message(message.channel, "봇 제작자만 사용할수 있는 커맨드입니다!")
+            await message.channel.send("봇 제작자만 사용할수 있는 커맨드입니다!")
 
 
 app.run(set.token)
