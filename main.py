@@ -18,7 +18,7 @@ app = discord.Client()
 @app.event
 async def on_ready():
     print("Mary Notice Module for" , app.user.name, " (%s)" % app.user.id)
-    owner.append(set.owner)
+    owner.append(int(set.owner))
 
 @app.event
 async def on_message(message):
