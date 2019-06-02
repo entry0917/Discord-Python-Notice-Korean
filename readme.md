@@ -10,7 +10,7 @@ Discord-Python-Notice-Korean (DPNK)
 
 ## __**한글**__ :
 
-1. 파이썬3.6을 설치해주세요!
+1. 파이썬3.6+를 설치해주세요!
 2. CMD에서 `pip install discord`를 쳐주세요!
 4. `setting.py`파일을 수정해주세요.
 
@@ -24,7 +24,7 @@ Discord-Python-Notice-Korean (DPNK)
 
 ## __**English**__ :
 
-1. Install Python3.6.
+1. Install Python3.6+.
 2. In CMD, Type `pip install discord`.
 4. Edit `setting.py` File.
 
