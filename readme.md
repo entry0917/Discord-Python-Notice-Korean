@@ -4,7 +4,7 @@ Discord-Python-Notice-Korean (DPNK)
 
 # 설치하시기 전에
 
-[**Mary Support Discord**](http://support.maryst.kro.kr/)
+[**StayCute Discord**](http://discord.gg/7TdTv9w)
 
 # 설치 방법
 
