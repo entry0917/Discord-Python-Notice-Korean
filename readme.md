@@ -42,4 +42,4 @@ We're ready to announce!
 
 # 문의
 
-디스코드에서 **매리#4633** 검색 후 DM 또는 [**Mary Support Discord**](http://support.maryst.kro.kr/) 사용
+디스코드에서 **매리#4633** 검색 후 DM 또는 [**StayCute Discord**](http://discord.gg/7TdTv9w) 사용
