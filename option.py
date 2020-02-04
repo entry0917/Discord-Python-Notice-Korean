@@ -28,3 +28,5 @@ allowprefix = ["notice", "공지"]
 
 #허용 공지 채널 접두사가 들어있다 하더라도 이 접두사가 들어가 있으면 공지 하지 않습니다.
 disallowprefix = ["밴", "경고", "제재", "길드", "ban", "worry", "warn", "guild"]
+
+__Do_Per_Task = 5
